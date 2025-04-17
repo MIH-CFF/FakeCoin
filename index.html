@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coinfake - Crypto Airdrop</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Additional styles for sticky nav */
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--card-bg);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sticky Navigation Bar -->
+      <nav class="sticky-nav pt-3">
+        <div class="nav-container">
+          <div class="logo">
+            <span class="logo-icon">₡</span>
+            <h1>Coinfake</h1>
+          </div>
+          <div class="nav-links">
+            <a href="index.html" class="active"
+              ><i class="fas fa-home"></i> Home</a
+            >
+            <a href="dashboard.html"
+              ><i class="fas fa-chart-pie"></i> Dashboard</a
+            >
+            <a href="#"><i class="fas fa-lightbulb"></i> Prank Ideas</a>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+          </div>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+      </nav>
+
+      <main style="padding: 50px">
+        <section id="giveaway-form" class="card active">
+          <h2>🎉 Exclusive Crypto Airdrop 🎉</h2>
+          <p>
+            Send your friend a fake crypto giveaway notification as a harmless
+            prank!
+          </p>
+
+          <form id="prank-form">
+            <div class="form-group">
+              <label for="friend-name">Friend's Name</label>
+              <input
+                type="text"
+                id="friend-name"
+                required
+                placeholder="Elon Musk"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="friend-email">Friend's Email</label>
+              <input
+                type="email"
+                id="friend-email"
+                required
+                placeholder="elon@tesla.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="prize-amount">Prize Amount (fake)</label>
+              <select id="prize-amount">
+                <option value="1000">1,000 LOLToken ($0.00)</option>
+                <option value="5000">5,000 LOLToken ($0.00)</option>
+                <option value="10000" selected>10,000 LOLToken ($0.00)</option>
+                <option value="1000000">1,000,000 LOLToken ($0.00)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="cta-button">
+              🚀 Send Prank Airdrop
+            </button>
+            <p class="disclaimer">
+              This is a harmless prank. No actual crypto will be sent.
+            </p>
+          </form>
+        </section>
+
+        <section id="confirmation" class="card hidden">
+          <h2>Prank Successful! 🎭</h2>
+          <p id="confirmation-message"></p>
+          <button id="view-dashboard" class="cta-button">
+            💰 View Fake Dashboard
+          </button>
+          <button id="send-another" class="secondary-button">
+            ↩ Send Another Prank
+          </button>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3><i class="fas fa-rocket footer-icon"></i> Coinfake</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-info-circle footer-link-icon"></i>
+                  <a href="#">About</a>
+                </li>
+                <li>
+                  <i class="fas fa-lightbulb footer-link-icon"></i>
+                  <a href="#">Prank Ideas</a>
+                </li>
+                <li>
+                  <i class="fas fa-comment-dots footer-link-icon"></i>
+                  <a href="#">Testimonials</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3><i class="fas fa-balance-scale footer-icon"></i> Legal</h3>
+              <ul>
+                <li>
+                  <i class="fas fa-exclamation-triangle footer-link-icon"></i>
+                  <a href="#">Disclaimer</a>
+                </li>
+                <li>
+                  <i class="fas fa-shield-alt footer-link-icon"></i>
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li>
+                  <i class="fas fa-file-contract footer-link-icon"></i>
+                  <a href="#">Terms of Use</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3><i class="fas fa-handshake footer-icon"></i> Connect</h3>
+              <ul>
+                <li>
+                  <i class="fab fa-twitter footer-link-icon"></i>
+                  <a href="#">Twitter</a>
+                </li>
+                <li>
+                  <i class="fab fa-instagram footer-link-icon"></i>
+                  <a href="#">Instagram</a>
+                </li>
+                <li>
+                  <i class="fas fa-envelope footer-link-icon"></i>
+                  <a href="#">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>
+              <i class="far fa-copyright"></i> 2025 Coinfake. All rights
+              reserved. This is a parody project not affiliated with any real
+              cryptocurrency service.
+            </p>
+            <div class="footer-disclaimer">
+              <p>
+                <i class="fas fa-exclamation-circle"></i>
+                <strong>Disclaimer:</strong> This is a joke application. No real
+                cryptocurrency is involved. Please use responsibly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      // Update the view dashboard button to link to the new dashboard page
+      document.addEventListener("DOMContentLoaded", function () {
+        const viewDashboardBtn = document.getElementById("view-dashboard");
+        if (viewDashboardBtn) {
+          viewDashboardBtn.addEventListener("click", function () {
+            window.location.href = "dashboard.html";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
